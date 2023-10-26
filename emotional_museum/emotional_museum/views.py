@@ -4,12 +4,23 @@ from .forms import NameForm
 def index(request):
     return render(request, 'home.html')
 def login(request):
-    def check(name):
-        cur.execute(f'''SELECT name from emotional_museum WHERE sportsman = "{name}" ''')
+    def checkString(x):
+        s = 'abcdefghijklmnopqrstuvwxyz_1234567890'
+        x = x.lower()
+        t = True
+        for i in x:
+            if not(i in s):
+                t = False
+        return t
+    def checkName(cur):
+        cur.execute(f'''SELECT name from login WHERE name = "{name}" ''')
         if cur.fetchall() == []:
-            return True
+            if checkString(name):
+                return [True, '']
+            else:
+                return [False, 'Логин может состоять из латиницы, чисел или нижнего подчёркивания ']
         else:
-            return False
+            return [False, 'Логин уже занят']
     out = ''
     if request.method == 'POST':
         form = NameForm(request.POST)
@@ -20,15 +31,17 @@ def login(request):
                 import sqlite3
                 name = form.cleaned_data['name']
                 email = form.cleaned_data['email']
+                email = email.replace('@', '|')
                 clas = form.cleaned_data['clas']
-                con = sqlite3.connect('emotional_museum.db')
+                con = sqlite3.connect('emotional_museum/emotional_museum/emotional_museum.db')
                 cur = con.cursor()
-                if check(name):
-                    cur.execute(f'''SELECT name from emotional_museum;''')
-                    cur.execute(f"INSERT INTO emotional_museum VALUES({len(cur.fetchall())+1, name, password, email, clas});")
+                checkName = checkName(cur)
+                if checkName[0]:
+                    cur.execute(f'''SELECT name from login;''')
+                    cur.execute(f"""INSERT INTO login VALUES(?, ?, ?, ?, ?);""", (len(cur.fetchall()), name, password, email, clas))
                     con.commit()
                 else:
-                    out = 'Логин уже занят'
+                    out = checkName[1]
             else:
                 if password1 != password:
                     out = 'Пароли не совпадают'

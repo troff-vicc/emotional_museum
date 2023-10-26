@@ -2,8 +2,8 @@ from django import forms
 
 class NameForm(forms.Form):
     GEEKS_CHOICES = (
-        'Посититель',
-        'Музей'
+        ('0', 'Посититель'),
+        ('1', 'Музей')
     )
     name = forms.CharField(label_suffix=False, label='', max_length=50,
                            widget=forms.TextInput(attrs={'placeholder': 'Логин'}))
