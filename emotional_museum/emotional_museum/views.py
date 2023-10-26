@@ -20,11 +20,12 @@ def login(request):
                 import sqlite3
                 name = form.cleaned_data['name']
                 email = form.cleaned_data['email']
+                clas = form.cleaned_data['clas']
                 con = sqlite3.connect('emotional_museum.db')
                 cur = con.cursor()
                 if check(name):
                     cur.execute(f'''SELECT name from emotional_museum;''')
-                    cur.execute(f"INSERT INTO emotional_museum VALUES({len(cur.fetchall())+1, name, password, email});")
+                    cur.execute(f"INSERT INTO emotional_museum VALUES({len(cur.fetchall())+1, name, password, email, clas});")
                     con.commit()
                 else:
                     out = 'Логин уже занят'
