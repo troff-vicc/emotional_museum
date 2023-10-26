@@ -6,10 +6,13 @@
 </head>
 <body>
 <form method="post" id="inputForm">
-  {% csrf_token %}
-  {{ form.name }}
-  {{ form.password }}
-  <input type="submit" id="button">
+    {% csrf_token %}
+    {{ form.name }}
+    {{ form.password }}
+    {{ form.password1 }}
+    {{ form.email }}
+    {{ form.clas }}
+    <input type="submit" id="button">
 </form>
 <b>{{out}}</b>
 </body>

@@ -22,5 +22,6 @@ from . import views
 urlpatterns = [
     path("", views.index),
     path("login/", views.login),
+    path("logup/", views.logup),
     path('admin/', admin.site.urls),
 ]

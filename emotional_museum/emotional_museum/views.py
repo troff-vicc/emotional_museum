@@ -1,9 +1,30 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from .forms import NameForm
+from .forms import logupForm, loginForm
 
 def index(request):
     return render(request, 'home.html')
 def login(request):
+    out = ''
+    if request.method == 'POST':
+        form = loginForm(request.POST)
+        if form.is_valid():
+            import sqlite3
+            name = form.cleaned_data['name']
+            password = form.cleaned_data['password']
+            con = sqlite3.connect('emotional_museum/emotional_museum/emotional_museum.db')
+            cur = con.cursor()
+            cur.execute(f'''SELECT password from login WHERE name = "{name}" ''')
+            passwordTrue = cur.fetchall()
+            print(passwordTrue[0][0], password)
+            if passwordTrue[0][0] == password:
+                return HttpResponseRedirect('/')
+            else:
+                out = 'Неверный логин или пароль'
+    else:
+        form = loginForm()
+    return render(request, 'login.html', {'form': form, 'out': out})
+def logup(request):
     def checkString(x):
         s = 'abcdefghijklmnopqrstuvwxyz_1234567890'
         x = x.lower()
@@ -23,7 +44,7 @@ def login(request):
             return [False, 'Логин уже занят']
     out = ''
     if request.method == 'POST':
-        form = NameForm(request.POST)
+        form = logupForm(request.POST)
         if form.is_valid():
             password = form.cleaned_data['password']
             password1 = form.cleaned_data['password1']
@@ -48,5 +69,5 @@ def login(request):
                 else:
                     out = 'Пароль должен быть длинее 8 символов'
     else:
-        form = NameForm()
-    return render(request, 'login.html', {'form': form, 'out': out})
+        form = logupForm()
+    return render(request, 'logup.html', {'form': form, 'out': out})
