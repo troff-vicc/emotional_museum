@@ -16,11 +16,12 @@ def login(request):
             cur = con.cursor()
             cur.execute(f'''SELECT password from login WHERE name = "{name}" ''')
             passwordTrue = cur.fetchall()
-            print(passwordTrue[0][0], password)
+            if passwordTrue == []:
+                return HttpResponseRedirect('http://127.0.0.1:8080/logup/')
             if passwordTrue[0][0] == password:
                 return HttpResponseRedirect('/')
             else:
-                out = 'Неверный логин или пароль'
+                out = 'Неверный пароль'
     else:
         form = loginForm()
     return render(request, 'login.html', {'form': form, 'out': out})
@@ -82,3 +83,11 @@ def listExhibits(request):
     cur.execute(f'''SELECT * from exhibits''')
     listElExhibits = cur.fetchall()
     return render(request, 'listExhibits.html', {'listExhibits': listElExhibits})
+def exhibits(request):
+    import sqlite3
+    id = request.GET.get("id")
+    con = sqlite3.connect('emotional_museum/emotional_museum/emotional_museum.db')
+    cur = con.cursor()
+    cur.execute(f'''SELECT * from exhibits WHERE id = "{id}"''')
+    exhibit = cur.fetchall()
+    return render(request, 'listExhibits.html', {'listExhibits': exhibit})
