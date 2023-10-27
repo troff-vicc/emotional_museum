@@ -84,17 +84,16 @@ footer{
     font-style: italic;
     color:red;
 }
-.name{
-    text-align:center;
-}
-.year{
-    padding-left: 20px;
-}
-.info{
-    font-size: 20px;
-    padding-left:20px;
-}
+.voprosi{
+    color: #000;
 
+margin-left:40%;
+font-family: Playfair Display;
+font-size: 60px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
 
     </style>
 </head>
@@ -109,7 +108,7 @@ footer{
                     <li class="item"><a  href="http://127.0.0.1:8080/aboutUs" class="link">О нас</a></li>
                     <li class="item"><a  href="http://127.0.0.1:8080/aboutProject" class="link">О проекте</a></li>
                     <li class="item"><a  href="http://127.0.0.1:8080/listExhibits" class="link">Список экспанатов</a></li>
-                    <li class="item"><a   href="http://127.0.0.1:8080/listExhibits.faq" class="link">FAQ</a></li>
+                    <li class="item"><a   href="http://127.0.0.1:8080/faq" class="link">FAQ</a></li>
                 </ul>
             </nav>
             
@@ -117,9 +116,13 @@ footer{
         <button class="btn"><a href="http://127.0.0.1:8080/login" class="link"> Вход/Регистрация</a></button>
     </header>
     <main class="main">
-            <h1 class="name">{{exhibit.1}}</h1>
-            <h2 class="year">{{exhibit.2}}</h2>
-            <p class="info">{{exhibit.3}}</p>
+            <p class="voprosi">Часто задаваемые вопросы</p>
+            <p class="question">Как выбираются экспонаты для меня?</p>
+            <p id="a1">Экспонаты выбираются с помощью сложных алгоритмов основанных на нейронных сетях, проверяются, будут ли они приятны пользователю, и, наконец, выводится на экран.</p>
+            <p class="question">Как музею добавить экспонат на сайт?</p>
+            <p id="a2">Для добавления экспоната нужно будет зарегитрироваться, создать выставку, создать экспонат и сохранить.</p>
+            <p class="question"></p>
+            <p id="a2"></p>
     </main> 
     <footer class="footer">
         <p class="copy"> © 2023-Чертоги разума <br> chertogi-razuma.com <p class="age">0+</p></p>

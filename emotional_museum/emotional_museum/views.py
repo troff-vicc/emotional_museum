@@ -76,6 +76,8 @@ def aboutProject(request):
     return render(request, 'aboutProject.html')
 def aboutUs(request):
     return render(request, 'aboutUs.html')
+def faq(request):
+    return render(request, 'faq.html')
 def listExhibits(request):
     import sqlite3
     con = sqlite3.connect('emotional_museum/emotional_museum/emotional_museum.db')
@@ -89,5 +91,5 @@ def exhibits(request):
     con = sqlite3.connect('emotional_museum/emotional_museum/emotional_museum.db')
     cur = con.cursor()
     cur.execute(f'''SELECT * from exhibits WHERE id = "{id}"''')
-    exhibit = cur.fetchall()
+    exhibit = cur.fetchall()[0]
     return render(request, 'exhibit.html', {'exhibit': exhibit})
