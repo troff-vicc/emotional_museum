@@ -90,4 +90,4 @@ def exhibits(request):
     cur = con.cursor()
     cur.execute(f'''SELECT * from exhibits WHERE id = "{id}"''')
     exhibit = cur.fetchall()
-    return render(request, 'listExhibits.html', {'listExhibits': exhibit})
+    return render(request, 'exhibit.html', {'exhibit': exhibit})
