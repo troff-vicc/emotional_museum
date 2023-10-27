@@ -127,6 +127,18 @@ b{
   margin-left:calc(50% - 100px);
   color:red;
 }
+.reg{
+    
+  color: #000;
+
+text-align: center;
+font-family: Playfair Display;
+font-size: 64px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+
+}
     </style>
 </head>
 <body>
@@ -140,13 +152,14 @@ b{
                     <li class="item"><a  href="http://127.0.0.1:8080/aboutUs" class="link">О нас</a></li>
                     <li class="item"><a  href="http://127.0.0.1:8080/aboutProject" class="link">О проекте</a></li>
                     <li class="item"><a  href="http://127.0.0.1:8080/listExhibits" class="link">Список экспанатов</a></li>
-                    <li class="item"><a   href="faq.html" class="link">FAQ</a></li>
+                    <li class="item"><a   href="http://127.0.0.1:8080/faq" class="link">FAQ</a></li>
                 </ul>
             </nav>
             
         </div>
         <button class="btn"><a href="http://127.0.0.1:8080/login" class="link"> Вход/Регистрация</a></button>
     </header>
+    <p class="reg">Регистрация</p>
 <form method="post" id="inputForm">
     {% csrf_token %}
     {{ form.name }}
@@ -158,7 +171,7 @@ b{
 </form>
 <b>{{out}}</b>
 <footer class="footer">
-    <p class="copy"> © 2023-... <br> chertogi-razuma.com <p class="age">0+</p></p>
+    <p class="copy"> © 2023-Чертоги разума <br> chertogi-razuma.com <p class="age">0+</p></p>
 </footer>
 </body>
 </html>
