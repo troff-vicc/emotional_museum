@@ -2,9 +2,157 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Чертоги разума</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+*{
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+body{
+  margin: 0;
+}
+.header{
+  width: 100%;
+
+  margin:auto;
+  padding: 18px 32px 17px 146px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list{
+  padding:0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+
+}
+
+.link{
+  color:black;
+  text-decoration: none;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 24px; /* 171.429% */
+  text-transform: uppercase;
+}
+.nav-img{
+  display:flex;
+  align-items: flex-start;
+}
+.btn{
+  background-color: #4682B4;
+  padding:14px 60px;
+  border:none;
+  color: #FFFFFF;
+  font-family: DIN;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 28px; /* 200% */
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.item:not(:last-child){
+  margin-right:60px;
+}
+.nav{
+  margin-right:26px;
+}
+
+.main{
+  max-width: 1408px;
+}
+footer{
+  margin-left: 30px;
+  width:100%;
+  
+}
+.footlink{
+  text-decoration: none; 
+  color: grey;
+  margin-right: 10px;  
+}
+.copy{
+  color: grey;
+}
+.age{
+  font-style: italic;
+  color:red;
+}
+#id_name{
+  font-size: 50px;
+display: block;
+margin: auto;
+width: 829px;
+height: 125px;
+flex-shrink: 0;
+background: #D9D9D9;
+margin-bottom:50px;
+}
+#id_password
+{
+  font-size: 50px;
+  width: 829px;
+height: 125px;
+flex-shrink: 0;
+background: #D9D9D9;
+  display: block;
+margin: auto;
+margin-bottom: 50px;
+}
+#button{
+  font-size: 50px;;
+  display: block;
+  width: 500px;
+height: 100px;
+flex-shrink: 0;
+border-radius: 10px;
+border: 1px solid #0280C8;
+
+background: #00A3FF;
+margin:auto;
+}
+b{
+  padding:45%;
+  color:red;
+}
+form {text-align:center;}
+.vhod{
+  color: #000;
+
+text-align: center;
+font-family: Playfair Display;
+font-size: 64px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+  </style>
 </head>
 <body>
+  <header class="header">
+    <a href="http://127.0.0.1:8080/" class="link"><img class="logo" src="logo.png" alt="logo"></a>
+
+    <div class="nav-img">
+        <nav class="nav">
+            <ul class="list">
+                <li class="item"><a  href="http://127.0.0.1:8080/" class="link">Домой</a></li>
+                <li class="item"><a  href="http://127.0.0.1:8080/aboutUs" class="link">О нас</a></li>
+                <li class="item"><a  href="http://127.0.0.1:8080/aboutProject" class="link">О проекте</a></li>
+                <li class="item"><a  href="http://127.0.0.1:8080/listExhibits" class="link">Список экспанатов</a></li>
+                <li class="item"><a   href="faq.html" class="link">FAQ</a></li>
+            </ul>
+        </nav>
+        
+    </div>
+    <button class="btn"><a href="http://127.0.0.1:8080/login" class="link"> Вход/Регистрация</a></button>
+</header>
+<p class="vhod">Вход</p>
 <form method="post" id="inputForm">
   {% csrf_token %}
   {{ form.name }}
@@ -12,5 +160,8 @@
   <input type="submit" id="button">
 </form>
 <b>{{out}}</b>
+<footer class="footer">
+  <p class="copy"> © 2023-... <br> chertogi-razuma.com <p class="age">0+</p></p>
+</footer>
 </body>
 </html>
