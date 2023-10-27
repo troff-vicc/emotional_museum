@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<tr>
+    <th colspan="3" style="font-size: 25px">Список экспонатов</th>
+</tr>
+<tr>
+    <td align="center">
+        Имя
+    </td>
+    <td align="center">
+        Дата
+    </td>
+    <td align="center">
+        Описание
+    </td>
+</tr>
+{% for el in listExhibits %}
+<tr>
+    <td align="center">
+        {{el.0}}
+    </td>
+    <td align="center">
+        {{el.1}}
+    </td>
+    <td align="center">
+        {{el.2}}
+    </td>
+</tr>
+{% endfor %}
+</body>
+</html>

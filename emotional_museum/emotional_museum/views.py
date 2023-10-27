@@ -71,3 +71,14 @@ def logup(request):
     else:
         form = logupForm()
     return render(request, 'logup.html', {'form': form, 'out': out})
+def aboutProject(request):
+    return render(request, 'aboutProject.html')
+def aboutUs(request):
+    return render(request, 'aboutUs.html')
+def listExhibits(request):
+    import sqlite3
+    con = sqlite3.connect('emotional_museum/emotional_museum/emotional_museum.db')
+    cur = con.cursor()
+    cur.execute(f'''SELECT * from exhibits''')
+    listElExhibits = cur.fetchall()
+    return render(request, 'listExhibits.html', {'listExhibits': listElExhibits})
